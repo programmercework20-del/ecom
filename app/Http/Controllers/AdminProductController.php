@@ -10,6 +10,7 @@ class AdminProductController extends Controller
     // show product list
   public function index()
 {
+
     $products = Product::orderBy('id', 'desc')->paginate(10);
 
     return view('admin.product.index', compact('products'));
@@ -35,10 +36,9 @@ class AdminProductController extends Controller
     // image name
     $imageName = time().'.'.$request->image->extension();
 
-    // destination folder (public/products)
+    // destination folder
     $destination = public_path('products');
 
-    // create folder if not exists
     if (!file_exists($destination)) {
         mkdir($destination, 0755, true);
     }
@@ -46,16 +46,23 @@ class AdminProductController extends Controller
     // move image
     $request->image->move($destination, $imageName);
 
+    // 🔥 FULL IMAGE URL (dynamic)
+    $fullImagePath = url('products') . '/' . $imageName;
+    // example:
+    // http://localhost/ecom/public/products/1767773003.jpg
+    // http://192.168.1.7/ecom/public/products/1767773003.jpg
+
     // save in DB
     Product::create([
         'name'  => $request->name,
         'price' => $request->price,
         'desc'  => $request->desc,
-        'image' => $imageName,
+        'image' => $fullImagePath, // 👈 FULL URL
     ]);
 
     return redirect('/admin/products')->with('success', 'Product Added');
 }
+
 
 public function destroy($id)
 {
