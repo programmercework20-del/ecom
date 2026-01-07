@@ -5,7 +5,24 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Product;
 
 
+use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\ProductImageController;
 
-Route::get('/products', function () {
-    return Product::orderBy('id', 'desc')->get();
-});
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+Route::get('/products', [ApiController::class, 'index']);
+Route::get('/products/{id}', [ApiController::class, 'show']);
+
+
+
+Route::post('/product-images', [ProductImageController::class, 'store']);
+Route::get('/product-images/{productId}', [ProductImageController::class, 'show']);
+Route::delete('/product-images/{id}', [ProductImageController::class, 'destroy']);

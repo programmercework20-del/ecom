@@ -46,45 +46,62 @@
                         <th width="120">Price</th>
                         <th>Description</th>
                         <th width="120">Image</th>
-                        <th width="120">Action</th>
+                        <th width="180">Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @forelse($products as $p)
                         <tr>
-                           <td>{{ $products->firstItem() + $loop->index }}</td>
+                            <td>{{ $products->firstItem() + $loop->index }}</td>
 
                             <td>{{ $p->name }}</td>
                             <td>₹ {{ number_format($p->price, 2) }}</td>
                             <td>{{ $p->desc }}</td>
+
                             <td>
-                                <img src="{{ asset('products/'.$p->image) }}"
-     class="img-thumbnail"
-     style="width:80px">
+                              <img src="{{ Str::startsWith($p->image, 'http') ? $p->image : asset('products/'.$p->image) }}"
+     width="80">
 
                             </td>
+
                             <td>
-                                
-                                <form action="{{ route('admin.products.destroy', $p->id) }}" method="POST">
+                                <!-- ✅ MANAGE IMAGES BUTTON (FIXED) -->
+                        <a href="{{ route('admin.products.images', $p->id) }}"
+                class="btn btn-sm btn-primary">
+                Manage Images
+                </a>
+
+
+
+                                <!-- DELETE -->
+                                <form action="{{ route('admin.products.destroy', $p->id) }}"
+                                      method="POST"
+                                      style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Are you sure you want to delete this product?')">
-                                        <i class="bi bi-trash"></i> Delete
+                                    <button type="submit"
+                                            class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete this product?')">
+                                        Delete
                                     </button>
                                 </form>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center text-muted">
+                            <td colspan="6" class="text-center text-muted">
                                 No products found
                             </td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
+
+            <!-- Pagination -->
+            <div class="mt-3">
+                {{ $products->links() }}
+            </div>
         </div>
     </div>
 
