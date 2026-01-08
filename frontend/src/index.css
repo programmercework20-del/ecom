@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Make Swiper navigation arrows black */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #000 !important;   /* Black color */
+  font-weight: bold;
+}
+
+/* Optional: Bigger size for better visibility */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 30px !important;
+  height: 30px !important;
+}
+/* Make pagination bullets black */
+/* Style bullets as rectangle bars */
+.swiper-pagination-bullet {
+  width: 15px !important;
+  height: 5px !important;
+  border-radius: 3px !important;
+  background: #ccc !important;
+  opacity: 1 !important;
+  margin: 0 4px !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #000 !important;
+  width: 30px !important;
+}
+
+/* Move pagination BELOW the cards */
+.swiper-pagination {
+  position: relative !important;   /* reset Swiper default absolute */
+  margin-top: 20px;                /* space below cards */
+  text-align: center;              /* center align */
+}
+
+.whatsapp_float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+
+.whatsapp-icon {
+  margin-top: 16px;
+}
+
+
+
