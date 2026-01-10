@@ -30,12 +30,17 @@
      style="height:150px">
 
 
-                <form method="POST"
-                      action="{{ url('/admin/product-image/'.$img->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger btn-sm mt-2">Delete</button>
-                </form>
+              <form method="POST"
+      action="{{ route('admin.products.images.destroy', $img->id) }}"
+      onsubmit="return confirm('Delete this image?')">
+    @csrf
+    @method('DELETE')
+
+    <button type="submit" class="btn btn-danger btn-sm mt-2">
+        Delete
+    </button>
+</form>
+
             </div>
         @endforeach
     </div>
