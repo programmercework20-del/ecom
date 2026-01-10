@@ -1,9 +1,14 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminNotificationController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminProductImageController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\StockController;
+use App\Http\Controllers\OrderController;
 use App\Models\Product;
 
 /*
@@ -53,6 +58,10 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
             ->name('admin.products.store');
         Route::delete('/products/{id}', [AdminProductController::class, 'destroy'])
             ->name('admin.products.destroy');
+            Route::get('/products/{id}/edit', [AdminProductController::class, 'edit'])
+            ->name('admin.products.edit');
+        Route::put('/products/{id}', [AdminProductController::class, 'update'])
+            ->name('admin.products.update');
 
             // manage product images
     Route::prefix('admin')->group(function () {
@@ -65,5 +74,41 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
 
     Route::delete('/product-image/{id}', [AdminProductImageController::class, 'destroy'])
         ->name('admin.products.images.destroy');
+
+// category routes
+Route::get('/category/create', [CategoryController::class, 'create'])
+    ->name('admin.category.create');
+
+Route::post('/category/store', [CategoryController::class, 'store'])
+    ->name('admin.category.store');
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])
+    ->name('admin.category.destroy');
+
+// stock routes
+Route::get('/stock', [StockController::class, 'index'])
+    ->name('admin.stock.index');
+Route::post('/stock/store', [StockController::class, 'store'])
+    ->name('admin.stock.store');
+Route::delete('/stock/{id}', [StockController::class, 'destroy'])
+    ->name('admin.stock.destroy');
+    
+    
+// order routes
+Route::get('/orders', [OrderController::class, 'index'])
+    ->name('admin.orders.index');
+    Route::get('/admin/orders/{id}', [OrderController::class, 'show'])
+    ->name('admin.orders.show');
+    Route::post('/admin/orders/{id}/cancel',
+    [OrderController::class, 'cancel'])
+    ->name('admin.orders.cancel');
+Route::post('/orders/{id}/update-status', [OrderController::class, 'updateStatus'])
+    ->name('admin.orders.updateStatus');
+
+// admin notification routes
+Route::get(
+    '/admin/notifications/{id}',
+    [AdminNotificationController::class, 'read']
+)->name('admin.notifications.read');
+
 });
 });

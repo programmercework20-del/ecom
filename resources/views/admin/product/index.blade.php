@@ -45,6 +45,9 @@
                         <th>Name</th>
                         <th width="120">Price</th>
                         <th>Description</th>
+                        <th>Stock</th>
+                        <th>Size</th>
+                        <th>Category</th>
                         <th width="120">Image</th>
                         <th width="180">Action</th>
                     </tr>
@@ -58,13 +61,41 @@
                             <td>{{ $p->name }}</td>
                             <td>₹ {{ number_format($p->price, 2) }}</td>
                             <td>{{ $p->desc }}</td>
-
                             <td>
-                              <img src="{{ Str::startsWith($p->image, 'http') ? $p->image : asset('products/'.$p->image) }}"
-     width="80">
+    @if($p->stocks->count())
+        @foreach($p->stocks as $stock)
+            @if($stock->product_quantity > 0)
+                <span class="badge bg-success mb-1 d-inline-block">
+                    {{ $stock->product_size }} :
+                    {{ $stock->product_quantity }}
+                </span><br>
+            @else
+                <span class="badge bg-danger mb-1 d-inline-block">
+                    {{ $stock->product_size }} : Out
+                </span><br>
+            @endif
+        @endforeach
+    @else
+        <span class="text-danger">No Stock</span>
+    @endif
+</td>
 
-                            </td>
+                            
+                            <td>{{ $p->size }}</td>
+                           <td>{{ $p->categoryRel->name ?? 'N/A' }}</td>
 
+
+        <td>
+    @if($p->image)
+        <img src="{{ asset('storage/' . $p->image) }}" 
+             width="80" 
+             alt="{{ $p->name }}"
+             data-fallback="{{ asset('images/placeholder.jpg') }}"
+             onerror="this.src = this.dataset.fallback;">
+    @else
+        <img src="{{ asset('images/placeholder.jpg') }}" width="80" alt="No Image">
+    @endif
+</td>
                             <td>
                                 <!-- ✅ MANAGE IMAGES BUTTON (FIXED) -->
                         <a href="{{ route('admin.products.images', $p->id) }}"
@@ -72,6 +103,12 @@
                 Manage Images
                 </a>
 
+
+                               <!-- EDIT -->
+                                <a href="{{ route('admin.products.edit', $p->id) }}"
+                                   class="btn btn-sm btn-warning">
+                                    Edit
+                                </a>
 
 
                                 <!-- DELETE -->
@@ -94,7 +131,14 @@
                                 No products found
                             </td>
                         </tr>
+
                     @endforelse
+                    <tr>
+                        <td colspan="6">
+                            {{ $products->links() }}
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
 
