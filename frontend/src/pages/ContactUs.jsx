@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { FaWhatsapp, FaEnvelope, FaPhoneAlt, FaFacebook } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const fadeUp = {
@@ -125,10 +125,13 @@ const ContactUs = () => {
               📍 123 Fashion Street, Mumbai, India
             </p>
             <p className="text-gray-600 mb-2">
-              📧 support@hussainstudio.com
+              📧 hussainstudios112211@gmail.com
+            </p>
+            <p className="text-gray-600 mb-2">
+              📞 +91 95187 95065
             </p>
             <p className="text-gray-600 mb-4">
-              📞 +91 95187 95065
+              📘 Facebook: <a href="https://www.facebook.com/share/1BZd1L88bu/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Visit our Facebook</a>
             </p>
 
             {/* QUICK ACTIONS */}
@@ -143,18 +146,20 @@ const ContactUs = () => {
               </a>
 
               <a
-                href="mailto:support@hussainstudio.com"
+                href="mailto:hussainstudios112211@gmail.com"
                 className="flex items-center justify-center gap-3 py-3 rounded-full border border-black hover:bg-black hover:text-white transition"
               >
                 <FaEnvelope /> Email Us
               </a>
 
-              <a
-                href="tel:+919518795065"
-                className="flex items-center justify-center gap-3 py-3 rounded-full border border-black hover:bg-black hover:text-white transition"
+              {/* <a
+                href="https://www.facebook.com/share/1BZd1L88bu/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition"
               >
-                <FaPhoneAlt /> Call Us
-              </a>
+                <FaFacebook /> Follow on Facebook
+              </a> */}
             </div>
           </div>
 

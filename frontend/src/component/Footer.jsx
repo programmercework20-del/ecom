@@ -5,6 +5,7 @@ import {
   FaPhone,
   FaHome,
   FaTruck,
+  FaFacebook,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -28,7 +29,7 @@ const Footer = () => {
           </p>
 
           {/* Social */}
-          {/* <div className="flex justify-center md:justify-start gap-5 mt-6 text-xl">
+          <div className="flex justify-center md:justify-start gap-5 mt-6 text-xl">
             <a
               href="https://instagram.com"
               target="_blank"
@@ -39,13 +40,22 @@ const Footer = () => {
               <FaInstagram />
             </a>
             <a
-              href="mailto:orders@hussainstudio.co.in"
+              href="https://www.facebook.com/share/1BZd1L88bu/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="hover:text-gray-300 transition"
+            >
+              <FaFacebook />
+            </a>
+            <a
+              href="mailto:hussainstudios112211@gmail.com"
               aria-label="Email"
               className="hover:text-gray-300 transition"
             >
               <FaEnvelope />
             </a>
-          </div> */}
+          </div>
         </div>
 
         {/* Quick Links */}
@@ -76,14 +86,20 @@ const Footer = () => {
             </li>
             <li className="flex justify-center md:justify-start items-center gap-3">
               <FaEnvelope />
-              <a href="mailto:orders@hussainstudio.co.in" className="hover:text-white">
-                orders@hussainstudio.co.in
+              <a href="mailto:hussainstudios112211@gmail.com" className="hover:text-white">
+                hussainstudios112211@gmail.com
               </a>
             </li>
             <li className="flex justify-center md:justify-start items-center gap-3">
               <FaInstagram />
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white">
                 hussain.studios
+              </a>
+            </li>
+            <li className="flex justify-center md:justify-start items-center gap-3">
+              <FaFacebook />
+              <a href="https://www.facebook.com/share/1BZd1L88bu/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                Facebook Profile
               </a>
             </li>
 
@@ -119,7 +135,7 @@ const Footer = () => {
         </div> */}
 
         {/* Payments */}
-        <div className="flex items-center gap-4">
+        {/* <div className="flex items-center gap-4">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg"
             alt="Visa"
@@ -135,11 +151,11 @@ const Footer = () => {
             alt="Mastercard"
             className="h-8"
           />
-        </div>
+        </div> */}
       </div>
 
       {/* Copyright */}
-      <div className="text-center text-xs text-gray-500 mt-8">
+      <div className="text-center text-xs text-gray-500 mt-4">
         © {year} HUSSAIN STUDIO. All rights reserved.
       </div>
     </footer>

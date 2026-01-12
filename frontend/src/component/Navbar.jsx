@@ -133,7 +133,7 @@
 
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { FaShoppingBag, FaHeart, FaInstagram } from "react-icons/fa";
+import { FaShoppingBag, FaHeart, FaInstagram, FaFacebook, FaEnvelope } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useSelector } from "react-redux";
 
@@ -250,15 +250,31 @@ const Navbar = () => {
           </nav>
 
           {/* Footer */}
-          <div className="mt-auto pt-10 border-t border-white/20">
+          <div className="mt-auto pt-10 border-t border-white/20 space-y-4">
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 tracking-widest text-sm"
+              className="flex items-center gap-3 tracking-widest text-sm hover:text-gray-300 transition"
             >
               <FaInstagram />
               Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/share/1BZd1L88bu/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 tracking-widest text-sm hover:text-gray-300 transition"
+            >
+              <FaFacebook />
+              Facebook
+            </a>
+            <a
+              href="mailto:hussainstudios112211@gmail.com"
+              className="flex items-center gap-3 tracking-widest text-sm hover:text-gray-300 transition"
+            >
+              <FaEnvelope />
+              Email
             </a>
           </div>
         </div>
