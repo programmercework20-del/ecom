@@ -26,3 +26,11 @@ Route::get('/products/{id}', [ApiController::class, 'show']);
 Route::post('/product-images', [ProductImageController::class, 'store']);
 Route::get('/product-images/{productId}', [ProductImageController::class, 'show']);
 Route::delete('/product-images/{id}', [ProductImageController::class, 'destroy']);
+
+
+Route::get('/product/{id}/stock', [ApiController::class, 'productStock']);
+
+Route::post('/order/place', [ApiController::class, 'placeOrder']);
+Route::post('/order/cancel/{id}', [ApiController::class, 'cancelOrder']);
+
+Route::get('/orders', [ApiController::class, 'orders']);

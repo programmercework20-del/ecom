@@ -12,16 +12,6 @@ import img1 from "../../src/assets/IMG_9274.PNG";
 import img2 from "../../src/assets/IMG_9281.PNG";
 import img3 from "../../src/assets/IMG_9283.PNG";
 
-// const PRODUCTS = [
-//   { id: 1, name: "Blush Pink Linen Shirt", category: "Linen Blend", image: img1, oldPrice: 2099, price: 1699 },
-//   { id: 2, name: "Ocean Blue Linen Shirt", category: "Linen Blend", image: img2, oldPrice: 2099, price: 1699 },
-//   { id: 3, name: "Vintage Wine Linen Shirt", category: "Linen Blend", image: img3, oldPrice: 2099, price: 1699 },
-//   { id: 4, name: "Soft Sand Linen Shirt", category: "Plain", image: img1, oldPrice: 2099, price: 1699 },
-//   { id: 5, name: "Ash Grey Linen Shirt", category: "Regular", image: img2, oldPrice: 2099, price: 1699 },
-//   { id: 6, name: "Classic White Linen Shirt", category: "Relaxed", image: img3, oldPrice: 2099, price: 1699 },
-//   { id: 7, name: "Sky Blue Linen Shirt", category: "Striped", image: img1, oldPrice: 2099, price: 1699 },
-//   { id: 8, name: "Olive Green Linen Shirt", category: "BestSeller", image: img2, oldPrice: 2099, price: 1699 },
-// ];
 
 const PRODUCTS = [
   {
